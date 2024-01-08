@@ -1,21 +1,21 @@
 {
-  "username": null,
-  "count_game": 0,
-  "wins": 0,
-  "loses": 0,
-  "pcy": 0,
-  "money": 0,
-  "games": [
-    {
-      "winner": "None",
-      "money_win": 0,
-      "rounds": [
+    "username": null,
+    "count_game": 0,
+    "wins": 0,
+    "loses": 0,
+    "pcy": 0,
+    "money": 0,
+    "games": [
         {
-          "winner": "None",
-          "player_pick": 0,
-          "ai_pick": 0
+            "winner": "None",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "winner": "None",
+                    "player_pick": 0,
+                    "ai_pick": 0
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
