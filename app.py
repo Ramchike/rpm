@@ -55,9 +55,9 @@ class User(Player):
         choices = inquirer.List('choice', 
             message = "Ваш ход",
             choices = [
-                ("STONE", Choice.STONE),
-                ("SHEARS", Choice.SHEARS),
-                ("PAPER", Choice.PAPER)
+                ("Камень", Choice.STONE),
+                ("Ножницы", Choice.SHEARS),
+                ("Бумага", Choice.PAPER)
             ]
         )
         answer = inquirer.prompt([choices])
