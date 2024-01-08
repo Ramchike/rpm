@@ -1,17 +1,17 @@
 {
     "username": null,
-    "count_game": 0,
-    "wins": 0,
+    "count_game": 6,
+    "wins": 5,
     "loses": 0,
     "pcy": 0,
     "money": 0,
     "games": [
         {
-            "winner": "None",
+            "result": "None",
             "money_win": 0,
             "rounds": [
                 {
-                    "winner": "None",
+                    "result": "None",
                     "player_pick": 0,
                     "ai_pick": 0
                 }
