@@ -12,10 +12,18 @@ from math import trunc
 
 
 def animatePrint(text):
+    
+    
     for char in text:
         print(char, end='', flush=True)
         time.sleep(0.08)
     print()
+    
+def exportData(data):
+    
+    
+    with open("profile.json", 'w') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
 
 class Result(Enum):
     WIN = 1
@@ -34,11 +42,14 @@ class Round:
     ai_pick: Choice
 
     def to_json(self) -> dict:
+        
+        
         return {
             "result": self.result.name,
             "player_pick": self.player_pick.name,
             "ai_pick": self.ai_pick.name
         }
+        
 
 class Player(ABC):
 
@@ -51,16 +62,68 @@ class AiPlayer(Player):
     def __init__(self):
         pass
 
-    def getPick(self) -> Choice:
-        return random.choice(list(Choice))
+    def getPick(self, pl_pick, data) -> Choice:
+        
+        games = data['games']
+        if len(games) > 3:
+            
+            after_paper = {
+                "SHEARS": 0,
+                "PAPER": 0,
+                "STONE": 0
+            }
+
+            after_stone = {
+                "SHEARS": 0,
+                "PAPER": 0,
+                "STONE": 0
+            }
+
+            after_shears = {
+                "SHEARS": 0,
+                "PAPER": 0,
+                "STONE": 0
+            }
+            
+            for game in games:
+                rounds = game['rounds']
+                if len(rounds) > 1:
+                    for i in range(1, len(rounds)):
+                        last_player_pick = rounds[i - 1]['player_pick']
+                        player_pick = rounds[i]['player_pick']
+                        match last_player_pick:
+                            case "PAPER":
+                                after_paper[player_pick] += 1
+                            case "STONE":
+                                after_stone[player_pick] += 1
+                            case "SHEARS":
+                                after_shears[player_pick] += 1
+                
+            match pl_pick.name:
+                case "PAPER":
+                    pick = max(after_paper, key=after_paper.get)
+                    return Choice[pick]
+                case "STONE":
+                    pick = max(after_stone, key=after_stone.get)
+                    return Choice[pick]
+                case "SHEARS":
+                    pick = max(after_shears, key=after_shears.get)
+                    return Choice[pick]
+        else:
+            return random.choice(list(Choice))
 
 class User(Player):
 
-    def __init__(self, username, balance):
-        self.username = username
-        self.balance = balance
+    def __init__(self, data):
+        
+        
+        self.data = data
+        self.username = self.data['username']
+        self.balance = self.data['money']
 
     def getPick(self) -> Choice:
+        
+        
         choices = inquirer.List('choice', 
             message = "Ваш ход",
             choices = [
@@ -73,21 +136,32 @@ class User(Player):
         return answer['choice']
     
     def editUserName(self) -> str:
-        self.username = input("Введи желаемое имя пользователя: ")
-        return self.username
+        
+        
+        self.data['username'] = input("Введи желаемое имя пользователя: ")
+        exportData(self.data)
+        
 
 class Game:
 
-    def __init__(self, player, ai):
+    def __init__(self, player, ai, data):
+        
+        
         self.rounds: List[Round] = []
         self.player = player
         self.ai = ai
+        self.data = data
 
     def start(self, round_count):
+        
+        
         result_game = 0
         for i in range(round_count):
             player_pick = self.player.getPick()
-            ai_pick = self.ai.getPick()
+            if round_count == 1:
+                ai_pick = random.choice(list(Choice))
+            else:
+                ai_pick = self.ai.getPick(player_pick, self.data)
             if player_pick == ai_pick:
                 round_result = Result.DRAW
             elif (player_pick.value == 0 and ai_pick.value == 1) or (player_pick.value == 1 and ai_pick.value == 2) or (player_pick.value == 2 and ai_pick.value == 0):
@@ -115,33 +189,55 @@ class Game:
 class App:
 
     def __init__(self):
+        
+        
         self.loadData()
-        self.player = User(self.data['username'], self.data['money'])
+        self.player = User(self.data)
         self.ai = AiPlayer()
 
     def loadData(self):
+        
+        
         with open("profile.json", "r") as f:
             self.data = json.load(f)
 
     def startGame(self):
-        game = Game(self.player, self.ai)
+        
+        
+        game = Game(self.player, self.ai, self.data)
         count_rounds = inquirer.List('count', 
         message = "Выберите Кол-во раундов",
         choices = [
             ("1", 1),
             ("3", 3),
             ("5", 5),
-            ("10", 10),
-            ("Выйти", self.exitApp())
+            ("10", 10)
         ]
     )
         answer = inquirer.prompt([count_rounds])
         data_game = game.start(answer['count'])
-        print(data_game)
-        print(json.dumps(data_game, indent=1))
+        self.data['games'].append(data_game)
+        self.data['count_game'] += 1
+        exportData(self.data)
+        self.showCommandMenu()
+        
+    def resetStat(self):
+        default_data = {
+            "username": "None",
+            "count_game": 0,
+            "wins": 0,
+            "loses": 0,
+            "pcy": 0,
+            "money": 0,
+            "games": []
+        }
+        exportData(default_data)
 
     def showStat(self):
+        
+        
         data = self.data
+        pcy = trunc((data['wins'] / data['count_game']) * 100)
         animatePrint(f"Имя пользователя: {data['username']}")
         animatePrint(f"Количество игр: {data['count_game']}")
         animatePrint(f"Побед: {data['wins']}")
@@ -149,10 +245,14 @@ class App:
         animatePrint(f"Процент побед: {trunc((data['wins'] / data['count_game']) * 100)}%")
         animatePrint(f"Монет: {data['money']}")
         animatePrint("История игр:")
+        self.showCommandMenu()
+        
     def showSettings(self):
+        
+        
         print("settings")
         settings = inquirer.List('setting', 
-        message = "Настройки:",
+        message = "Настройки",
         choices = [
             ("Поменять имя пользователя", self.player.editUserName),
             ("Выбрать тему", 1)
@@ -160,35 +260,17 @@ class App:
     )
         answer = inquirer.prompt([settings])
         answer['setting']()
+        self.showCommandMenu()
     
     def exitApp(self):
         print("exit")
 
     def showStartMenu(self):
 
-        print("""
-
-
-        ██████╗░░█████╗░░█████╗░██╗░░██╗  ██████╗░░█████╗░██████╗░███████╗██████╗░
-        ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝  ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
-        ██████╔╝██║░░██║██║░░╚═╝█████═╝░  ██████╔╝███████║██████╔╝█████╗░░██████╔╝
-        ██╔══██╗██║░░██║██║░░██╗██╔═██╗░  ██╔═══╝░██╔══██║██╔═══╝░██╔══╝░░██╔══██╗
-        ██║░░██║╚█████╔╝╚█████╔╝██║░╚██╗  ██║░░░░░██║░░██║██║░░░░░███████╗██║░░██║
-        ╚═╝░░╚═╝░╚════╝░░╚════╝░╚═╝░░╚═╝  ╚═╝░░░░░╚═╝░░╚═╝╚═╝░░░░░╚══════╝╚═╝░░╚═╝
-
-        ░██████╗██╗░░██╗███████╗░█████╗░██████╗░░██████╗
-        ██╔════╝██║░░██║██╔════╝██╔══██╗██╔══██╗██╔════╝
-        ╚█████╗░███████║█████╗░░███████║██████╔╝╚█████╗░
-        ░╚═══██╗██╔══██║██╔══╝░░██╔══██║██╔══██╗░╚═══██╗
-        ██████╔╝██║░░██║███████╗██║░░██║██║░░██║██████╔╝
-        ╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
-
-        """)
-
         self.showCommandMenu()
 
     def showCommandMenu(self):
-
+        print('\n\n')
         commands = inquirer.List('command', 
             message = "Выбор команды",
             choices = [
