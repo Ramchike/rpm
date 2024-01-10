@@ -1,9 +1,663 @@
 {
     "username": "Ramchike",
-    "count_game": 0,
-    "wins": 0,
+    "count_game": 53,
+    "wins": 5,
     "loses": 0,
     "pcy": 0,
     "money": 0,
-    "games": []
+    "games": [
+        {
+            "result": "None",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "None",
+                    "player_pick": 0,
+                    "ai_pick": 0
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                },
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "SHEARS",
+                    "ai_pick": "SHEARS"
+                },
+                {
+                    "result": "LOSE",
+                    "player_pick": "PAPER",
+                    "ai_pick": "SHEARS"
+                },
+                {
+                    "result": "LOSE",
+                    "player_pick": "PAPER",
+                    "ai_pick": "SHEARS"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "SHEARS",
+                    "ai_pick": "SHEARS"
+                },
+                {
+                    "result": "LOSE",
+                    "player_pick": "PAPER",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "SHEARS",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "PAPER",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "SHEARS",
+                    "ai_pick": "PAPER"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                },
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "PAPER",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "WIN",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "WIN",
+                    "player_pick": "STONE",
+                    "ai_pick": "SHEARS"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        },
+        {
+            "result": "LOSE",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "LOSE",
+                    "player_pick": "STONE",
+                    "ai_pick": "PAPER"
+                }
+            ]
+        },
+        {
+            "result": "DRAW",
+            "money_win": 0,
+            "rounds": [
+                {
+                    "result": "DRAW",
+                    "player_pick": "STONE",
+                    "ai_pick": "STONE"
+                }
+            ]
+        }
+    ]
 }
