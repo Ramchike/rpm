@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import time
 import inquirer
@@ -102,17 +103,25 @@ class AiPlayer(Player):
             match pl_pick.name:
                 case "PAPER":
                     pick = max(after_paper, key=after_paper.get)
-                    return Choice[pick]
+                    pl_often_pick = Choice[pick].name
                 case "STONE":
                     pick = max(after_stone, key=after_stone.get)
-                    return Choice[pick]
+                    pl_often_pick = Choice[pick].name
                 case "SHEARS":
                     pick = max(after_shears, key=after_shears.get)
-                    return Choice[pick]
+                    pl_often_pick = Choice[pick].name
+            match pl_often_pick:
+                case "PAPER":
+                    return Choice.SHEARS
+                case "STONE":
+                    return Choice.PAPER
+                case "SHEARS":
+                    return Choice.STONE
         else:
             return random.choice(list(Choice))
 
 class User(Player):
+    
 
     def __init__(self, data):
         
@@ -137,9 +146,11 @@ class User(Player):
     
     def editUserName(self) -> str:
         
-        
-        self.data['username'] = input("Введи желаемое имя пользователя: ")
+        new_username = input("Введи желаемое имя пользователя: ")
+        self.data['username'] = new_username
         exportData(self.data)
+        animatePrint(f"Имя пользователя {new_username} успешно установлено.")
+        animatePrint("\nВыходим в меню......")
         
 
 class Game:
@@ -153,10 +164,12 @@ class Game:
         self.data = data
 
     def start(self, round_count):
-        
-        
+        rounds_pl = 0
+        rounds_ai = 0
         result_game = 0
         for i in range(round_count):
+            animatePrint("....Начало нового раунда....\n")
+            time.sleep(0.5)
             player_pick = self.player.getPick()
             if round_count == 1:
                 ai_pick = random.choice(list(Choice))
@@ -164,22 +177,39 @@ class Game:
                 ai_pick = self.ai.getPick(player_pick, self.data)
             if player_pick == ai_pick:
                 round_result = Result.DRAW
+                rounds_ai += 1
+                rounds_pl += 1
             elif (player_pick.value == 0 and ai_pick.value == 1) or (player_pick.value == 1 and ai_pick.value == 2) or (player_pick.value == 2 and ai_pick.value == 0):
                 round_result = Result.WIN
                 result_game += 1
+                rounds_pl += 1
             else:
                 round_result = Result.LOSE
                 result_game += -1
-            print(round_result.name)
+                rounds_ai += 1
+            match round_result.name:
+                case "WIN":
+                    animatePrint("Вы выиграли в этом раунде.")
+                case "DRAW":
+                    animatePrint("Ничья в этом раунде.")
+                case "LOSE":
+                    animatePrint("Вы проиграли в этом раунде.")
             round = Round(round_result, player_pick, ai_pick)
             round_data = round.to_json()
             self.rounds.append(round_data)
+        animatePrint("==== Статистика игры ====\n")
         if result_game >= 1:
             result_game = Result.WIN
+            animatePrint("      Результат: Победа")
         elif result_game == 0:
             result_game = Result.DRAW
+            animatePrint("      Результат: Ничья")
         else:
             result_game = Result.LOSE
+            animatePrint("      Результат: Поражение")
+        animatePrint(f"      Общий счёт ВЫ : ИИ составил:  {rounds_pl} : {rounds_ai}")
+        animatePrint("\nВыходим в меню......")
+        time.sleep(2)
         return { 
             "result": result_game.name,
             "money_win": 0,
@@ -218,6 +248,11 @@ class App:
         data_game = game.start(answer['count'])
         self.data['games'].append(data_game)
         self.data['count_game'] += 1
+        match data_game['result']:
+            case "WIN":
+                self.data['wins'] += 1
+            case "LOSE":
+                self.data['loses'] += 1
         exportData(self.data)
         self.showCommandMenu()
         
@@ -231,31 +266,40 @@ class App:
             "money": 0,
             "games": []
         }
+        
         exportData(default_data)
+        f = open("profile.json")
+        f.close()
+        animatePrint("Статистика была успешно сброшена")
+        animatePrint("\nВыходим в меню......")
 
     def showStat(self):
         
-        
-        data = self.data
-        pcy = trunc((data['wins'] / data['count_game']) * 100)
-        animatePrint(f"Имя пользователя: {data['username']}")
-        animatePrint(f"Количество игр: {data['count_game']}")
-        animatePrint(f"Побед: {data['wins']}")
-        animatePrint(f"Поражений: {data['loses']}")
-        animatePrint(f"Процент побед: {trunc((data['wins'] / data['count_game']) * 100)}%")
-        animatePrint(f"Монет: {data['money']}")
-        animatePrint("История игр:")
+        data = open("profile.json")
+        data = json.load(data)
+        if data['wins'] != 0:
+            pcy = trunc((data['wins'] / data['count_game']) * 100)
+        else:
+            pcy = 0
+        animatePrint("==== Статистика игрока ====\n")
+        animatePrint(f"     Имя пользователя: {data['username']}")
+        animatePrint(f"     Количество игр: {data['count_game']}")
+        animatePrint(f"     Побед: {data['wins']}")
+        animatePrint(f"     Поражений: {data['loses']}")
+        animatePrint(f"     Процент побед: {pcy}%")
+        animatePrint(f"     Монет: {data['money']}")
+        animatePrint("\nВыходим в меню...")
+        time.sleep(2)
         self.showCommandMenu()
         
     def showSettings(self):
         
         
-        print("settings")
         settings = inquirer.List('setting', 
         message = "Настройки",
         choices = [
             ("Поменять имя пользователя", self.player.editUserName),
-            ("Выбрать тему", 1)
+            ("Сбросить статистику", self.resetStat)
         ]
     )
         answer = inquirer.prompt([settings])
@@ -266,11 +310,10 @@ class App:
         print("exit")
 
     def showStartMenu(self):
-
         self.showCommandMenu()
 
     def showCommandMenu(self):
-        print('\n\n')
+        os.system('cls')
         commands = inquirer.List('command', 
             message = "Выбор команды",
             choices = [
