@@ -385,7 +385,6 @@ class App:
         animatePrint(f"     Побед: {data['wins']}")
         animatePrint(f"     Поражений: {data['loses']}")
         animatePrint(f"     Процент побед: {pcy}%")
-        animatePrint(f"     Монет: {data['money']}")
         animatePrint("\nВыходим в меню...")
         time.sleep(2)
         self.showCommandMenu()
